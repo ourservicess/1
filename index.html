@@ -26,8 +26,8 @@
     box-sizing:border-box;
     font-family:'Poppins',sans-serif;
 }
-#gallery{
-    display: none;
+.hidden{
+    display:none;
 }
 
 body{
@@ -191,7 +191,7 @@ footer{
     <h2>The Restroom</h2>
     <ul>
         <li><a href ="#menu">Menu</a></li>
-        <li><a href="#"onclick="showsection('gallerysection')">Gallery</a></li>
+        <li><a href="javascript:void(0)"onclick="showsection()">Gallery</a></li>
         <li><a href="#reservation">Reserve</a></li>
     </ul>
     <div class="toggle" onclick="toggleMode()">Mode</div>
@@ -225,7 +225,7 @@ footer{
     <div class="menu" id="menuContainer"></div>
 </section>
 
-<section id="gallery">
+<section id="gallerysection"class="hidden">
     <h2 class="section-title">Gallery</h2>
     <div class="gallery">
         <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
@@ -247,7 +247,7 @@ footer{
     </form>
 </section>
 
-<a class="whatsapp" href="https://wa.me/919999999999" target="_blank">
+<a class="whatsapp" href="https://wa.me/9313519783" target="_blank">
     WhatsApp Booking
 </a>
 
@@ -255,75 +255,7 @@ footer{
     © 2026 The Restroom | Premium Dining
 </footer>
 
-<!-- <script>
 
-/* Navbar Scroll Effect */
-window.addEventListener("scroll",function(){
-    document.getElementById("navbar")
-    .classList.toggle("scrolled",window.scrollY>50);
-});
-
-/* Dark Mode */
-function toggleMode(){
-    document.body.classList.toggle("light-mode");
-}
-
-/* MENU SYSTEM */
-const menuItems=[];
-const categories=[
-{ name:"Punjabi", items:["Punjabi Thali","Paneer Butter Masala","Dal Makhani","Chole Bhature","Amritsari Kulcha"]},
-{ name:"Chinese", items:["Hakka Noodles","Manchurian","Spring Roll","Chilli Paneer","Schezwan Rice"]},
-{ name:"South Indian", items:["Masala Dosa","Idli","Vada","Uttapam","Sambar Rice"]},
-{ name:"Chaat", items:["Pani Puri","Bhel Puri","Sev Puri","Dahi Puri","Aloo Tikki"]},
-{ name:"Desserts", items:["Chocolate Cake","Red Velvet Cake","Brownie","Gulab Jamun","Rasmalai"]},
-{ name:"Beverages", items:["Cold Coffee","Lassi","Milkshake","Mojito","Fresh Lime Soda"]},
-{ name:"Soft Drinks", items:["Coca Cola","Pepsi","Sprite","Fanta","Limca"]}
-];
-
-/* Generate 250+ Items */
-categories.forEach(cat=>{
-    for(let i=1;i<=8;i++){
-        cat.items.forEach(item=>{
-            menuItems.push({
-                name:item+" Special "+i,
-                category:cat.name,
-                description:"Authentic "+cat.name+" flavor crafted with premium ingredients."
-            });
-        });
-    }
-});
-
-const container=document.getElementById("menuContainer");
-const searchInput=document.getElementById("searchInput");
-
-function displayMenu(items){
-    container.innerHTML="";
-    items.forEach(item=>{
-        container.innerHTML+=`
-        <div class="menu-item">
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            <small>${item.category}</small>
-        </div>`;
-    });
-}
-
-function filterCategory(category){
-    if(category==="All"){
-        displayMenu(menuItems);
-    }else{
-        displayMenu(menuItems.filter(item=>item.category===category));
-    }
-}
-
-searchInput.addEventListener("keyup",function(){
-    const value=this.value.toLowerCase();
-    displayMenu(menuItems.filter(item=>item.name.toLowerCase().includes(value)));
-});
-
-displayMenu(menuItems);
-
-</script> -->
 <script>
 
 /* Navbar Scroll Effect */
@@ -367,7 +299,31 @@ categories.forEach(cat=>{
 
 const container=document.getElementById("menuContainer");
 const searchInput=document.getElementById("searchInput");
-document.getElementById("gallery").style.display="none";
+
+//   function showsection() {
+
+//     // Hide menu and reservation
+//     document.getElementById("menu").classList.add("hidden");
+//     document.getElementById("reservation").classList.add("hidden");
+
+//     // Show gallery
+//     document.getElementById("gallerysection").classList.remove("hidden");
+
+//     // Scroll to top
+//     window.scrollTo({ top: 0, behavior: "smooth" });
+// }  
+function showsection() {
+
+    // Hide header, menu and reservation
+    document.querySelector("header").classList.add("hidden");
+    document.getElementById("menu").classList.add("hidden");
+    document.getElementById("reservation").classList.add("hidden");
+
+    // Show gallery
+    document.getElementById("gallerysection").classList.remove("hidden");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
 /* Display Menu */
 function displayMenu(items){
     container.innerHTML="";
