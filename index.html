@@ -189,7 +189,7 @@ footer{
 
 <nav id="navbar">
     <h2>The Restroom</h2>
-    <ul>
+    <ul id="navLinks">
         <li><a href ="#menu">Menu</a></li>
         <li><a href="javascript:void(0)"onclick="showsection()">Gallery</a></li>
         <li><a href="#reservation">Reserve</a></li>
@@ -321,18 +321,35 @@ const searchInput=document.getElementById("searchInput");
 //     // Scroll to top
 // /
 function showsection() {
+
+    // Hide page sections
     document.querySelector("header").classList.add("hidden");
     document.getElementById("menu").classList.add("hidden");
     document.getElementById("reservation").classList.add("hidden");
+
+    // Show gallery
     document.getElementById("gallerysection").classList.remove("hidden");
+
+    // Hide navbar links
+    document.getElementById("navLinks").classList.add("hidden");
+
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+
 function goBack() {
+
+    // Show page sections
     document.querySelector("header").classList.remove("hidden");
     document.getElementById("menu").classList.remove("hidden");
     document.getElementById("reservation").classList.remove("hidden");
+
+    // Hide gallery
     document.getElementById("gallerysection").classList.add("hidden");
+
+    // Show navbar links again
+    document.getElementById("navLinks").classList.remove("hidden");
+
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 /* Display Menu */
